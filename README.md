@@ -40,6 +40,50 @@ dotnet build
 
 ---
 
+**Demo rediseñado**
+
+Si has incorporado el nuevo rediseño y quieres probar el demo localmente o generar los artefactos estáticos para desplegar en GitHub Pages, sigue estas opciones:
+
+- Ejecutar en modo desarrollo (rápido, con recarga):
+
+```bash
+cd SocOps
+dotnet run --project SocOps.csproj
+# Abrir http://localhost:5000 en el navegador
+```
+
+- Generar artefactos estáticos para despliegue (publicación):
+
+```bash
+cd SocOps
+dotnet publish SocOps.csproj -c Release -o ./publish
+# Los archivos listos para servir estarán en ./publish/wwwroot
+```
+
+- Servir la carpeta publicada localmente (opciones):
+
+	- Con `dotnet-serve` (recomendado para .NET):
+
+	```bash
+	dotnet tool install --global dotnet-serve
+	dotnet-serve -d publish/wwwroot -p 8080
+	# Abrir http://localhost:8080
+	```
+
+	- Con `npx serve` (Node.js):
+
+	```bash
+	npx serve publish/wwwroot -p 8080
+	```
+
+- Despliegue en GitHub Pages:
+
+	1. Publica los contenidos de `publish/wwwroot` en la rama `gh-pages` o en la carpeta que uses para GitHub Pages.
+	2. Asegúrate de que el `base` en `index.html` (atributo `<base href="/">`) y las rutas a los recursos sean correctas para tu sitio.
+
+Nota: el proceso de `dotnet publish` generará las referencias correctas a los archivos de Blazor con hash/fingerprint en la salida de `wwwroot`. Usa la carpeta publicada para evitar tener que editar manualmente `index.html`.
+
+
 **Estructura útil**
 
 - `SocOps/Program.cs`: punto de entrada y configuración de servicios.
