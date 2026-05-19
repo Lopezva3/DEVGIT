@@ -10,6 +10,157 @@ body {
     -webkit-tap-highlight-color: transparent;
 }
 
+:root {
+    /* Corporate Clean Blue tokens */
+    --brand-primary: #0A66C2;
+    --brand-dark: #072A4E;
+    --bg-soft: #E9F2FB;
+    --brand-accent: #008282;
+    --surface: #FFFFFF;
+    --muted: #F5F7FA;
+    --text: #0B2B3A;
+    --elevation: 0 6px 18px rgba(7,42,78,0.08);
+    --radius: 8px;
+    --btn-radius: 8px;
+    --focus-ring: 3px rgba(10,102,194,0.18);
+    --font-stack: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Base theme overrides */
+html, body, #app {
+    background-color: var(--bg-soft);
+    color: var(--text);
+    font-family: var(--font-stack);
+}
+
+/* Common UI primitives */
+.container {
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--elevation);
+    padding: 1rem;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 1rem;
+    gap: 0.5rem;
+    border-radius: var(--btn-radius);
+    border: none;
+    background: var(--brand-primary);
+    color: #fff;
+    font-weight: 600;
+    box-shadow: 0 6px 12px rgba(10,102,194,0.12);
+}
+
+.btn:hover { filter: brightness(0.98); }
+.btn:active { transform: translateY(1px); }
+
+.btn--secondary {
+    background: transparent;
+    color: var(--brand-dark);
+    border: 1px solid rgba(11,43,58,0.06);
+}
+
+/* Primary button alias for existing .btn usage */
+.btn-primary {
+    background: var(--brand-primary);
+    color: #fff;
+    border-radius: var(--btn-radius);
+    padding: 0.6rem 1rem;
+    font-weight: 600;
+}
+
+/* Simple table styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table thead th {
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    background: transparent;
+    color: var(--brand-dark);
+    font-weight: 600;
+}
+
+table tbody td {
+    padding: 0.5rem 0.75rem;
+    border-top: 1px solid rgba(11,43,58,0.04);
+}
+
+/* Focus states */
+:where(button, a, input, select, textarea):focus {
+    outline: none;
+    box-shadow: 0 0 0 var(--focus-ring);
+}
+
+/* Utility: visually elevated modal background */
+.overlay {
+    background: rgba(7,42,78,0.6);
+}
+
+/* Bingo board and squares styling */
+.bingo-board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+}
+
+.bingo-square {
+    background: var(--surface);
+    border-color: rgba(11,43,58,0.06);
+    color: var(--text);
+    border-radius: 6px;
+    min-height: 60px;
+    box-shadow: none;
+}
+
+.bingo-square.bg-marked {
+    background: var(--brand-primary);
+    color: #ffffff;
+    border-color: rgba(10,102,194,0.18);
+}
+
+.bingo-square.bg-white, .bg-white {
+    background: var(--surface);
+}
+
+.bingo-square .text-green-600 {
+    color: #dff6f6;
+}
+
+/* Modal surface */
+.modal-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 1rem;
+    box-shadow: var(--elevation);
+}
+
+/* Dark theme overrides (applied when `theme-dark` class is present on <html>) */
+.theme-dark {
+    --bg-soft: #071426;
+    --surface: #0b2b3a;
+    --text: #e6f0fb;
+    --brand-primary: #1a6bb5;
+    --brand-dark: #021427;
+    --muted: #081827;
+    --elevation: 0 8px 24px rgba(0,0,0,0.6);
+}
+
+
 /* Tailwind-like utility classes */
 .h-full { height: 100%; }
 .min-h-full { min-height: 100%; }

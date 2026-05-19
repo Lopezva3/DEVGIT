@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta name="theme-color" content="#2563eb" />
+    <meta name="theme-color" content="#0A66C2" />
     <meta name="description" content="Social Bingo - Find people who match the questions!" />
     <title>Soc Ops - Social Bingo</title>
     <base href="/" />
@@ -30,6 +30,33 @@
         <span class="dismiss">🗙</span>
     </div>
     <script src="_framework/blazor.webassembly#[.{fingerprint}].js"></script>
+    <script>
+        window.theme = (function() {
+            function apply(theme) {
+                if (theme === 'dark') document.documentElement.classList.add('theme-dark');
+                else document.documentElement.classList.remove('theme-dark');
+                try {
+                    localStorage.setItem('theme', theme);
+                } catch (e) { }
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', theme === 'dark' ? '#072A4E' : '#0A66C2');
+            }
+
+            return {
+                init: function () {
+                    var stored = null;
+                    try { stored = localStorage.getItem('theme'); } catch (e) { }
+                    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+                    var theme = stored || (prefersDark ? 'dark' : 'light');
+                    apply(theme);
+                },
+                set: function(t) { apply(t); },
+                get: function() { return document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'; },
+                toggle: function() { var cur = document.documentElement.classList.contains('theme-dark') ? 'dark' : 'light'; apply(cur === 'dark' ? 'light' : 'dark'); }
+            };
+        })();
+        window.theme.init();
+    </script>
 </body>
 
 </html>

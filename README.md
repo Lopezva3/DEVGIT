@@ -1,56 +1,77 @@
 🌐 [Português (BR)](README.pt_BR.md) | [Español](README.es.md)
 
-# Soc Ops
+# SocOps — Social Bingo para encuentros presenciales
 
-Social Bingo game for in-person mixers. Find people who match the questions and get 5 in a row!
+SocOps es una pequeña SPA hecha en Blazor WebAssembly para jugar "Social Bingo" en eventos y rompehielos: comparte preguntas, encuentra personas que cumplan las condiciones y consigue 5 en línea.
 
-🎮 **[Play the Game](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/)** • 📚 **[View Lab Guide](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/)**
-
----
-
-## 📚 Lab Guide
-
-| Part | Title |
-|------|-------|
-| [**00**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=00-overview) | Overview & Checklist |
-| [**01**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=01-setup) | Setup & Context Engineering |
-| [**02**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=02-design) | Design-First Frontend |
-| [**03**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=03-quiz-master) | Custom Quiz Master |
-| [**04**](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/docs/step.html?step=04-multi-agent) | Multi-Agent Development |
-
-> 📝 Lab guides are also available in the [`workshop/`](workshop/) folder for offline reading.
+🎮 Demo: **[Play the Game](https://dotnet-presentations.github.io/vscode-github-copilot-agent-lab/)** • 📚 Guía: [workshop/ y docs](workshop/)
 
 ---
 
-## Prerequisites
+**Características principales**
 
-- [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or higher
+- Juego interactivo en el navegador usando Blazor WebAssembly.
+- Lógica de juego separada en `SocOps/Services` para facilitar pruebas y extensión.
+- Contenido y guías didácticas en `workshop/` y `docs/`.
 
-## Open in GitHub Codespaces (optional)
+---
 
-After creating your own repo from this template:
+**Empezar (rápido)**
 
-1. Open your repo on GitHub
-2. Click **Code** → **Codespaces** → **Create codespace on main**
-3. Wait for the devcontainer to finish setup
-4. From the repository root, run:
-   ```bash
-   cd SocOps
-   dotnet run
-   ```
+Prerequisitos:
 
-## Run
+- Instalado `.NET 10 SDK` o superior: https://dotnet.microsoft.com/download/dotnet/10.0
+
+Desde la raíz del repositorio:
 
 ```bash
 cd SocOps
-dotnet run
+dotnet run --project SocOps.csproj
 ```
 
-## Build
+La aplicación arranca como SPA y sirve la UI en `http://localhost:5000` (u otro puerto asignado).
+
+Para compilar sin ejecutar:
 
 ```bash
 cd SocOps
 dotnet build
 ```
 
-Deploys automatically to GitHub Pages on push to `main`.
+---
+
+**Estructura útil**
+
+- `SocOps/Program.cs`: punto de entrada y configuración de servicios.
+- `SocOps/Components`: componentes UI principales (BingoBoard, GameScreen, StartScreen).
+- `SocOps/Services`: lógica de juego (`BingoGameService`, `BingoLogicService`).
+- `SocOps/wwwroot`: assets estáticos y `index.html`.
+- `workshop/` y `docs/`: guías didácticas y material del taller.
+
+---
+
+**Contribuir**
+
+1. Abre un issue para discutir cambios importantes.
+2. Crea una rama descriptiva (`feature/...`, `fix/...`).
+3. Haz commits claros y atómicos.
+4. Envía un PR y referencia el issue.
+
+Lee [`CONTRIBUTING.md`](CONTRIBUTING.md) para más detalles.
+
+---
+
+**Despliegue**
+
+Este repositorio se despliega automáticamente en GitHub Pages al hacer push a la rama `main`.
+
+---
+
+**Licencia**
+
+Este proyecto utiliza la licencia del repositorio: consulta el archivo `LICENSE`.
+
+---
+
+¿Necesitas que lo traduzca al inglés también o que añada capturas y badges? Abro a sugerencias.
+
